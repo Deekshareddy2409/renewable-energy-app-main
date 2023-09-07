@@ -1,0 +1,16 @@
+p {
+  font-size: 15px;
+  font-weight: 300;
+  margin-top: 15px;
+}
+
+.container1 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 50vh; /* Adjust this if you want the container to take up a specific height */
+}
+
+.content {
+  text-align: center;
+}

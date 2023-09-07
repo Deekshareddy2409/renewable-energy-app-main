@@ -1,0 +1,179 @@
+<mat-tab-group (selectedTabChange)="onTabChange($event)">
+  <mat-tab label="My Contracts">
+    <div class="mt-3">
+      <h1
+        *ngIf="myContracts?.length === 0"
+        class="display-6"
+        style="font-size: 2rem; margin-left: 1rem"
+      >
+        No contracts posted
+      </h1>
+      <mat-card *ngFor="let contract of myContracts" style="margin: 2rem 2rem">
+        <img
+          mat-card-image
+          [src]="contract.image"
+          style="max-width: 100%; max-height: 100%; object-fit: contain"
+        />
+        <mat-card-header>{{ contract.name }}</mat-card-header>
+        <mat-card-content>Price: ${{ contract.price }}</mat-card-content>
+        <mat-card-content
+          >Description: {{ contract.description }}</mat-card-content
+        >
+        <mat-card-actions>
+          <button
+            mat-fab
+            color="warn"
+            class="del-button"
+            (click)="deleteContract(contract.id)"
+          >
+            <mat-icon>delete</mat-icon>
+          </button>
+        </mat-card-actions>
+      </mat-card>
+    </div>
+  </mat-tab>
+  <mat-tab label="Create new">
+    <div class="mt-3">
+      <form
+        [formGroup]="sellTrades"
+        (ngSubmit)="createContract()"
+        class="form-container"
+      >
+        <mat-form-field>
+          <mat-label>Name</mat-label>
+          <input matInput formControlName="name" />
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>Number of contracts</mat-label>
+          <input matInput type="number" formControlName="numOfContracts" />
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>Description</mat-label>
+          <textarea matInput rows="5" formControlName="description"></textarea>
+        </mat-form-field>
+        <mat-form-field floatLabel="always">
+          <mat-label>Price</mat-label>
+          <input
+            matInput
+            type="number"
+            placeholder="0"
+            formControlName="price"
+          />
+          <span matTextPrefix>$&nbsp;</span>
+          <span matTextSuffix>.00</span>
+        </mat-form-field>
+        <div class="form-group">
+          <label for="form-label">File</label>
+          <input
+            type="file"
+            class="form-control"
+            (change)="onFileChanged($event)"
+            formControlName="file"
+          />
+        </div>
+        <button class="btn btn-primary mt-4">Post Contract</button>
+      </form>
+    </div>
+  </mat-tab>
+  <mat-tab label="Bid Requests">
+    <div style="margin-left: 1.8rem" class="mt-2">
+      <mat-chip-listbox (change)="filterBids($event)" #chipBox>
+        <mat-chip-option
+          value="all"
+          selected="true"
+          color="primary"
+          [matBadge]="this.bids.length"
+          matBadgePosition="after"
+          matBadgeColor="accent"
+          >All</mat-chip-option
+        >
+        <mat-chip-option
+          value="pending"
+          color="warn"
+          [matBadge]="getNumOfBidsInCategory('pending')"
+          matBadgePosition="after"
+          matBadgeColor="accent"
+          >Pending</mat-chip-option
+        >
+        <mat-chip-option
+          value="accepted"
+          color="accent"
+          [matBadge]="getNumOfBidsInCategory('accepted')"
+          matBadgePosition="after"
+          matBadgeColor="accent"
+          >Accepted</mat-chip-option
+        >
+        <mat-chip-option
+          value="rejected"
+          color="warn"
+          [matBadge]="getNumOfBidsInCategory('rejected')"
+          matBadgePosition="after"
+          matBadgeColor="accent"
+          >Rejected</mat-chip-option
+        >
+      </mat-chip-listbox>
+
+      <mat-card
+        style="margin-top: 2rem"
+        *ngFor="let bid of filteredBids"
+        [ngClass]="{
+          'approved-background': bid.bidState === 'accepted',
+          'rejected-background': bid.bidState === 'rejected'
+        }"
+      >
+        <img
+          mat-card-image
+          [src]="bid.contract.image"
+          style="max-width: 100%; max-height: 100%; object-fit: contain"
+        />
+        <mat-card-header>{{ bid.contract.name }}</mat-card-header>
+        <mat-card-content
+          [ngStyle]="{
+            color:
+              bid.bidState === 'accepted' || bid.bidState === 'rejected'
+                ? 'black'
+                : 'initial'
+          }"
+          class="description"
+          >Price: ${{ bid.contract.price }}</mat-card-content
+        >
+        <mat-card-content
+          [ngStyle]="{
+            color:
+              bid.bidState === 'accepted' || bid.bidState === 'rejected'
+                ? 'black'
+                : 'initial'
+          }"
+          class="description"
+          >Bid Price: ${{ bid.bidPrice }}</mat-card-content
+        >
+        <mat-card-content
+          class="description"
+          [ngStyle]="{
+            color:
+              bid.bidState === 'accepted' || bid.bidState === 'rejected'
+                ? 'black'
+                : 'initial'
+          }"
+          >Bid State: {{ bid.bidState | uppercase }}</mat-card-content
+        >
+        <mat-card-actions *ngIf="bid.bidState === 'pending'">
+          <button
+            mat-icon-button
+            color="primary"
+            (click)="manageBidRequests(bid.bidId, 'accepted')"
+          >
+            <mat-icon>done</mat-icon>
+          </button>
+          <button
+            mat-icon-button
+            color="warn"
+            (click)="manageBidRequests(bid.bidId, 'rejected')"
+          >
+            <mat-icon>clear</mat-icon>
+          </button>
+        </mat-card-actions>
+      </mat-card>
+    </div>
+  </mat-tab>
+</mat-tab-group>

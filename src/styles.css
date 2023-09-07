@@ -1,0 +1,14 @@
+/* You can add global styles to this file, and also import other style files */
+.btn.btn-primary {
+  --bs-btn-bg: #1c40bc;
+  --bs-btn-border-color: #1c40bc;
+}
+
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}

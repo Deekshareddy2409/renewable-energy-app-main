@@ -1,0 +1,110 @@
+<p>login works!</p>
+<div class="container-fluid">
+  <div class="row">
+    <div class="card bg-glass">
+      <div
+        class="alert alert-success mt-4 alert-dismissible fade show"
+        *ngIf="loginSuccess"
+        role="alert"
+      >
+        Login Successful
+        <button
+          (click)="dismissAlert()"
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="alert"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div
+        class="alert alert-danger mt-4 alert-dismissible fade show"
+        *ngIf="loginError"
+        role="alert"
+      >
+        {{ this.loginError }}
+        <button
+          (click)="dismissAlert()"
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="alert"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="card-body">
+        <form
+          [formGroup]="loginForm"
+          (ngSubmit)="authenticateLogin()"
+          class="form-style"
+        >
+          <div
+            class="alert alert-danger"
+            role="alert"
+            *ngIf="
+                  this.loginForm.get('email').errors?.['required'] &&
+                  this.loginForm.get('email').touched
+                "
+          >
+            Email is required
+          </div>
+          <div
+            class="alert alert-danger"
+            role="alert"
+            *ngIf="
+                  this.loginForm.get('email').errors?.['email'] 
+                "
+          >
+            Please enter a valid email
+          </div>
+          <div
+            class="alert alert-danger"
+            role="alert"
+            *ngIf="
+                  this.loginForm.get('password').errors?.['required'] &&
+                  this.loginForm.get('password').touched
+                "
+          >
+            Password is required
+          </div>
+          <div class="form-group">
+            <label for="email">Email</label>
+            <input
+              type="email"
+              id="email"
+              class="form-control mb-2"
+              formControlName="email"
+            />
+          </div>
+          <div class="form-group">
+            <label for="password">Password</label>
+            <input
+              #passwordInput
+              type="{{ this.showPassword ? 'text' : 'password' }}"
+              id="password"
+              class="form-control"
+              formControlName="password"
+            />
+            <button
+              type="button"
+              class="icon-style"
+              (click)="this.showPassword = !this.showPassword"
+            >
+              <fa-icon [icon]="!showPassword ? eyeClosed : eyeOpen"></fa-icon>
+            </button>
+          </div>
+          <button
+            class="btn btn-primary mt-3"
+            [disabled]="!this.loginForm.valid"
+          >
+            Login
+          </button>
+          <div class="dropdown-divider"></div>
+          <div class="dropdown-item mt-2">
+            New around here?
+            <span><a id="signUpSpan" routerLink="../signup">Sign up</a></span>
+          </div>
+          <div class="dropdown-item"><a href="">Forgot password?</a></div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

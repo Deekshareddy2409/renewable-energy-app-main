@@ -1,0 +1,22 @@
+.btn-outline-primary {
+  margin-left: 10px;
+}
+
+.nav-pills .active {
+  background-color: #1c40bc;
+}
+
+.nav-link {
+  color: black;
+}
+
+.btn:hover {
+  background-color: #1c40bc;
+  color: white;
+}
+
+.custom-icon {
+  font-size: 29px;
+  width: 37px;
+  height: 28px;
+}

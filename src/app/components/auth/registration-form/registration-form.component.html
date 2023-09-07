@@ -1,0 +1,151 @@
+<div class="container-fluid">
+  <div class="row">
+    <mat-card class="card">
+      <mat-card-content>
+        <mat-stepper #stepper [linear]="true">
+          <!-- Step 1: Fill out your name -->
+          <mat-step class="bg-glass" [stepControl]="userForm">
+            <form [formGroup]="userForm">
+              <ng-template matStepLabel>Fill out your name</ng-template>
+              <div class="name-fields">
+                <mat-form-field class="first-name-field">
+                  <mat-label>First Name</mat-label>
+                  <input matInput id="firstname" formControlName="firstname" />
+                </mat-form-field>
+                <mat-form-field class="last-name-field">
+                  <mat-label>Last Name</mat-label>
+                  <input id="lastname" matInput formControlName="lastname" />
+                </mat-form-field>
+              </div>
+              <div class="email-account-fields">
+                <mat-form-field class="email-field">
+                  <mat-label>Email</mat-label>
+                  <input
+                    id="email"
+                    matInput
+                    type="email"
+                    formControlName="email"
+                  />
+                </mat-form-field>
+                <mat-form-field class="account-type-field">
+                  <mat-label>Account Type</mat-label>
+                  <mat-select formControlName="userType">
+                    <mat-option value="Buyer">Buyer</mat-option>
+                    <mat-option value="Seller">Seller</mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </div>
+              <div class="password-fields">
+                <mat-form-field class="password-field">
+                  <mat-label>Password</mat-label>
+                  <input
+                    id="password"
+                    matInput
+                    [type]="hide ? 'password' : 'text'"
+                    formControlName="password"
+                  />
+                  <button
+                    mat-icon-button
+                    matSuffix
+                    (click)="hide = !hide"
+                    [attr.aria-label]="'Hide password'"
+                    [attr.aria-pressed]="hide"
+                  >
+                    <mat-icon>{{
+                      hide ? "visibility_off" : "visibility"
+                    }}</mat-icon>
+                  </button>
+                </mat-form-field>
+                <mat-form-field class="confirm-password-field">
+                  <mat-label>Confirm Password</mat-label>
+                  <input
+                    matInput
+                    id="confirmpassword"
+                    [type]="hide ? 'password' : 'text'"
+                    formControlName="confirmpassword"
+                  />
+                  <button
+                    mat-icon-button
+                    matSuffix
+                    (click)="hide = !hide"
+                    [attr.aria-label]="'Hide password'"
+                    [attr.aria-pressed]="hide"
+                  >
+                    <mat-icon>{{
+                      hide ? "visibility_off" : "visibility"
+                    }}</mat-icon>
+                  </button>
+                </mat-form-field>
+              </div>
+              <div>
+                <button
+                  [disabled]="userForm.invalid"
+                  mat-button
+                  (click)="registerUser()"
+                >
+                  Next
+                </button>
+              </div>
+            </form>
+          </mat-step>
+
+          <!-- Step 2: Fill out your address -->
+          <mat-step class="bg-glass" [stepControl]="addressForm">
+            <form [formGroup]="addressForm">
+              <ng-template matStepLabel>Fill out your address</ng-template>
+              <div class="name-fields">
+                <mat-form-field class="businessName-field">
+                  <mat-label>Business Name</mat-label>
+                  <input matInput formControlName="businessName" />
+                </mat-form-field>
+                <mat-form-field class="registrationNumber-field">
+                  <mat-label>Registration Number</mat-label>
+                  <input matInput formControlName="registrationNumber" />
+                </mat-form-field>
+              </div>
+              <div class="email-account-fields">
+                <mat-form-field class="address-field">
+                  <mat-label>Address</mat-label>
+                  <input matInput formControlName="address" />
+                </mat-form-field>
+                <mat-form-field class="city-field">
+                  <mat-label>City</mat-label>
+                  <input matInput formControlName="city" />
+                </mat-form-field>
+              </div>
+              <div class="password-fields">
+                <mat-form-field class="province-field">
+                  <mat-label>Province</mat-label>
+                  <input matInput formControlName="province" />
+                </mat-form-field>
+                <mat-form-field class="zipCode-field">
+                  <mat-label>Zip Code</mat-label>
+                  <input matInput formControlName="zipCode" />
+                </mat-form-field>
+              </div>
+              <div>
+                <button mat-button matStepperNext (click)="saveAddress()">
+                  Next
+                </button>
+              </div>
+            </form>
+          </mat-step>
+
+          <!-- Step 3: Payment -->
+          <mat-step>
+            <ng-template matStepLabel>Payment</ng-template>
+            <p>You are now done.</p>
+            <div>
+              <button
+                mat-button
+                (click)="this._snackBar.open('Sign up complete', 'Dismiss')"
+              >
+                Sign up
+              </button>
+            </div>
+          </mat-step>
+        </mat-stepper>
+      </mat-card-content>
+    </mat-card>
+  </div>
+</div>

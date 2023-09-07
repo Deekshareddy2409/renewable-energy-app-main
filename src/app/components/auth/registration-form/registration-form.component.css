@@ -1,0 +1,51 @@
+.card {
+  margin: 10rem auto 0;
+  width: 60rem;
+  box-sizing: border-box; /* Include padding in the total width */
+}
+
+.container-fluid {
+  background-image: url("../../../../assets/backgrounds/background-form.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+
+.name-fields,
+.email-account-fields,
+.password-fields {
+  display: flex;
+  flex-wrap: wrap;
+  margin-bottom: 10px;
+}
+
+.first-name-field,
+.last-name-field,
+.email-field,
+.account-type-field,
+.password-field,
+.confirm-password-field,
+.businessName-field,
+.registrationNumber-field,
+.address-field,
+.city-field,
+.province-field,
+.zipCode-field {
+  flex: 1;
+  margin-right: 10px;
+}
+
+.email-account-fields,
+.password-fields,
+.name-fields {
+  flex-basis: calc(50% - 10px); /* Adjust the gap between fields as needed */
+}
+
+.bg-glass {
+  background-color: hsla(0, 0%, 100%, 0.9) !important;
+  backdrop-filter: saturate(500%) blur(4px);
+}

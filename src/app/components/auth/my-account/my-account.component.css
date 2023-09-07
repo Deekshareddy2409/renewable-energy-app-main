@@ -1,0 +1,80 @@
+.container-fluid {
+  top: 0px;
+  right: 0px;
+  bottom: 0px;
+  left: 0px;
+}
+
+.card {
+  margin-top: 10rem;
+  margin-left: auto;
+  margin-right: auto;
+  width: 35rem;
+  box-sizing: border-box;
+}
+
+.col-md-3 {
+  width: 20rem;
+}
+
+.nav {
+  padding: 30px;
+  border-radius: 5px;
+}
+
+.nav-item {
+  margin-bottom: 10px;
+}
+
+.nav-link {
+  color: black;
+  text-decoration: none;
+}
+
+.nav-link:hover,
+.nav-link:focus {
+  color: #1c40bc;
+  background-color: #f2f2f2;
+}
+
+.form-group {
+  padding-top: 20px;
+  padding-bottom: 5px;
+  width: 40%;
+}
+
+.form-style {
+  display: grid;
+  padding: 2rem 2rem;
+}
+
+.form-style button {
+  display: block;
+  margin-top: 0.5rem;
+  padding: 0.5rem;
+  width: 40%;
+}
+
+button {
+  background-color: #1c40bc;
+  color: white;
+  border-radius: 0.3rem;
+}
+
+input.ng-invalid.ng-touched {
+  border: 1px solid red;
+}
+
+form > label {
+  font-weight: bold;
+}
+
+.icon-style {
+  border: none;
+  background-color: transparent;
+  float: right;
+  left: -10px;
+  margin-top: -32px;
+  position: relative;
+  z-index: 2;
+}

@@ -1,0 +1,53 @@
+.card {
+  margin-top: 11rem;
+  margin-left: auto;
+  margin-right: auto;
+  width: 35rem;
+  /* height: auto;  */
+}
+
+.form-style {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 2rem 2rem;
+}
+
+input.ng-invalid.ng-touched {
+  border: 1px solid red;
+}
+
+.icon-style {
+  border: none;
+  background-color: transparent;
+  float: right;
+  left: -10px;
+  margin-top: -32px;
+  position: relative;
+  z-index: 2;
+}
+
+.container-fluid {
+  background-image: url("../../../../assets/backgrounds/background-form.jpg");
+  background-size: cover;
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  bottom: 0px;
+  left: 0px;
+}
+
+.bg-glass {
+  background-color: hsla(0, 0%, 100%, 0.9) !important;
+  backdrop-filter: saturate(500%) blur(4px);
+}
+
+#signUpSpan {
+  color: #1c40bc;
+  font-weight: bold;
+}
+
+a {
+  text-decoration: none;
+  color: black;
+}

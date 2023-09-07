@@ -1,0 +1,44 @@
+<div *ngIf="userType === 'Seller'; else buyer" class="form-style">
+  <app-sell-trades></app-sell-trades>
+</div>
+
+<ng-template #buyer>
+  <div class="main-container mt-4">
+    <div class="scrollable-container" *ngIf="!loading">
+      <div class="operations">
+        <mat-form-field style="width: 40rem; height: 4.5rem">
+          <mat-label>Search</mat-label>
+          <input matInput [(ngModel)]="searchTerm" (keyup)="performSearch()" />
+        </mat-form-field>
+        <span
+          style="margin-top: 1.1rem"
+          (click)="isAscending = !isAscending; sortTradingItems()"
+        >
+          <fa-icon
+            class="sort-icon"
+            [icon]="isAscending ? asc : desc"
+          ></fa-icon>
+        </span>
+      </div>
+      <h6 style="margin-left: 2rem; font-size: 1.1rem" class="display-6">
+        (Total: {{ allTradingItems.length }})
+      </h6>
+      <div class="container" *ngIf="tradingItems.length == 0">
+        <h1 class="display-6" style="font-size: 2rem; margin-left: 1.3rem">
+          No contracts available
+        </h1>
+      </div>
+      <div *ngFor="let tradeItem of tradingItems">
+        <app-trade-item
+          [tradeItem]="tradeItem"
+          (selectedItemEmitter)="setSelectedTradeItem($event)"
+        ></app-trade-item>
+      </div>
+    </div>
+    <div class="fixed-container">
+      <app-trade-item-desc
+        [selectedItem]="this.selectedItem"
+      ></app-trade-item-desc>
+    </div>
+  </div>
+</ng-template>

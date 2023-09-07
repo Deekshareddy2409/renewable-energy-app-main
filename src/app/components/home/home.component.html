@@ -1,0 +1,137 @@
+<main>
+  <div class="hero-image">
+    <div class="loggedInUser">
+      <div *ngIf="loggedInUser.userType" class="container">
+        <h3 class="display-6" style="margin-left: 200px">
+          Welcome
+          {{ loggedInUser.firstName !== "" ? loggedInUser.firstName : "" }}
+          {{ loggedInUser.lastName !== "" ? loggedInUser.lastName : "" }}
+        </h3>
+      </div>
+    </div>
+    <div class="hero-text">
+      <h1 class="display-6">Renewable energy commodity sourcing made easy</h1>
+      <h3 class="display-6" style="font-size: 23px">
+        Putting you back in control of your commodity, parts and material
+        sourcing needs
+      </h3>
+      <button class="getstarted" routerLink="/trading">
+        Buy/Sell Contracts
+      </button>
+    </div>
+  </div>
+
+  <div class="videoText1">
+    <div class="video-container">
+      <video autoplay poster muted loop preload="auto" id="video1">
+        <source src="../../../assets/home/video1.mp4" type="video/mp4" />
+        Your browser does not support the video tag.
+      </video>
+    </div>
+    <div style="padding-top: 100px; padding-right: 50px; flex: 1">
+      <h1 style="font-size: 60px">Buy and sell commodities</h1>
+      <p style="font-size: 20px; color: grey">
+        gain a competitive advantage by sourcing quality base materials and
+        parts at a lower price than your competition.
+      </p>
+    </div>
+  </div>
+  <div class="videoText1">
+    <div style="padding-top: 100px; padding-left: 50px; flex: 1">
+      <h1 style="font-size: 60px">Trade contracts securely</h1>
+      <p style="font-size: 20px; color: grey">
+        The first platform to allow for the trade of materials and parts used in
+        renewable energy manufacturing in the form of futures contracts,
+        allowing you to speculate and secure additional profits on part and
+        material prices in the same way you would commodities on a public
+        exchange
+      </p>
+    </div>
+    <div class="video-container video-right">
+      <video autoplay poster muted loop preload="auto" id="video1">
+        <source src="../../../assets/home/video2.mp4" type="video/mp4" />
+        Your browser does not support the video tag.
+      </video>
+    </div>
+  </div>
+  <div class="videoText1">
+    <div class="video-container">
+      <img
+        class="peopleImage"
+        src="../../../assets/brand/OracleLens About Us page design.jpg"
+        style="width: 80%"
+      />
+    </div>
+    <div style="padding-top: 150px; padding-right: 50px; flex: 1">
+      <h1 style="font-size: 60px">Mission statement</h1>
+      <p style="font-size: 20px; color: grey">
+        At OracleLens, we believe having access to safe, clean energy is a
+        right, not a privilege. Our mission is to make renewable energy
+        affordable for as many people as possible, creating greener and more
+        equitable communities around the world.
+      </p>
+    </div>
+  </div>
+  <div class="videoText1">
+    <div style="padding-top: 150px; padding-left: 50px; flex: 1">
+      <h1 style="font-size: 60px">About us</h1>
+      <p style="font-size: 20px; color: grey">
+        Providing market optimization for renewable energy companies in Canada,
+        in order to help accelerate the adoption of renewable energy globally,
+        set Canada apart as a global leader in renewable energy, and to make
+        renewable energy more accessible to customers.
+      </p>
+      <button class="getstarted colorWhite" routerLink="/contactus">
+        Contact us
+      </button>
+    </div>
+    <div class="video-container video-right">
+      <img
+        class="peopleImage"
+        src="../../../assets/brand/OracleLens Mission Statement logo.jpg"
+        style="height: 80%"
+      />
+    </div>
+  </div>
+  <!-- <div class="text-center my-5">
+    <h1 class="display-4 font-weight-bold">
+      Do even more with <br />
+      your money
+    </h1>
+  </div>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6">
+        <div class="card">
+          <div class="card-body text-center cardTexts">
+            <h1 class="card-title">Earn 4% interest on your cash balance</h1>
+            <p>
+              Invest and save $100,000 across your Wealthsimple accounts to
+              unlock a market-leading everyday interest rate on your cash.
+            </p>
+            <button class="btn btn-primary">Spend & save</button>
+          </div>
+          <img src="../../../assets/home/coins.png" alt="Image 1" />
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="card">
+          <div class="card-body text-center">
+            <h1 class="card-title">Buy, sell, and stake crypto</h1>
+            <p>
+              Trade coins with confidence. Stake them to earn passive returns,
+              all on Canada’s first regulated trading platform.
+            </p>
+            <button class="btn btn-primary">Crypto</button>
+          </div>
+          <img src="../../../assets/home/coins2.gif" alt="Image 2" />
+        </div>
+      </div>
+    </div>
+  </div> -->
+
+  <!-- Footer -->
+  <footer class="bg-dark text-white text-center py-4">
+    <p class="mb-0">&copy; 2023 OracleLens. All rights reserved.</p>
+  </footer>
+</main>

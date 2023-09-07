@@ -1,0 +1,76 @@
+<nav class="navbar navbar-expand-lg bg-white sticky-top">
+  <div class="container-fluid">
+    <a class="navbar-brand" routerLink="home">
+      <img
+        src="../../assets/brand/logo.png"
+        alt="brand-logo"
+        style="width: 90px; height: 40px; margin-right: 1.5rem"
+      />
+    </a>
+    <div class="collapse navbar-collapse">
+      <ul class="nav nav-pills me-auto">
+        <li class="nav-item">
+          <a
+            class="nav-link"
+            routerLink="home"
+            routerLinkActive="active"
+            [routerLinkActiveOptions]="{ exact: true }"
+            >Home</a
+          >
+        </li>
+        <li class="nav-item">
+          <a
+            class="nav-link"
+            routerLinkActive="active"
+            routerLink="trading"
+            [queryParams]="{ userType: loggedInUser.userType }"
+            >{{
+              loggedInUser.userType
+                ? loggedInUser.userType === "Seller"
+                  ? "Sell Contracts"
+                  : "Buy Contracts"
+                : "Trading"
+            }}</a
+          >
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLinkActive="active" routerLink="contactus"
+            >Contact us</a
+          >
+        </li>
+      </ul>
+      <div class="d-flex align-items-center">
+        <button
+          class="btn btn-outline-primary"
+          *ngIf="!loggedInUser.userType"
+          routerLink="login"
+        >
+          Login
+        </button>
+
+        <button
+          *ngIf="!loggedInUser.userType"
+          class="btn btn-outline-primary"
+          routerLink="signup"
+        >
+          Signup
+        </button>
+        <button
+          mat-icon-button
+          [matMenuTriggerFor]="userMenu"
+          *ngIf="loggedInUser.userType"
+        >
+          <mat-icon class="custom-icon">account_circle</mat-icon>
+        </button>
+        <mat-menu #userMenu="matMenu">
+          <button mat-menu-item routerLink="my-account">
+            <mat-icon>person</mat-icon> My Account
+          </button>
+          <button mat-menu-item (click)="routeToPage('logout')">
+            <mat-icon>exit_to_app</mat-icon> Logout
+          </button>
+        </mat-menu>
+      </div>
+    </div>
+  </div>
+</nav>

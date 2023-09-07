@@ -1,0 +1,50 @@
+<ng-container *ngIf="selectedItem; else noItemSelected">
+  <mat-card class="selected-item-card">
+    <div class="row">
+      <div class="col-md-12 text-center">
+        <div class="img-container">
+          <img
+            [src]="selectedItem.image"
+            class="img-fluid"
+            [alt]="selectedItem.name"
+          />
+        </div>
+      </div>
+      <div class="col-md-12 item-details">
+        <h2 class="mat-h2">{{ selectedItem.name }}</h2>
+        <div *ngIf="selectedItem.description.includes('\n'); else otherDesc">
+          <h4 class="mat-h4">Description:</h4>
+          <div class="description-columns">
+            <div *ngFor="let item of selectedItem.description.split('\n')">
+              <p>{{ item }}</p>
+            </div>
+          </div>
+        </div>
+        <ng-template #otherDesc>
+          <h4 class="mat-h4">Description: {{ selectedItem.description }}</h4>
+        </ng-template>
+        <p class="price">Price: ${{ selectedItem.price.toFixed(2) }}</p>
+        <mat-form-field floatLabel="always">
+          <mat-label>Bid Price</mat-label>
+          <input
+            matInput
+            type="number"
+            placeholder="0"
+            [(ngModel)]="bidValue"
+          />
+          <span matPrefix>$&nbsp;</span>
+        </mat-form-field>
+        <div class="bid-button-container">
+          <button mat-raised-button color="primary" (click)="sendBid()">
+            Place Bid
+          </button>
+        </div>
+      </div>
+    </div>
+  </mat-card>
+</ng-container>
+<ng-template #noItemSelected>
+  <div class="no-item-container">
+    <img src="../../../../assets/brand/logo.png" class="no-item" />
+  </div>
+</ng-template>
